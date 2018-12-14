@@ -15,27 +15,31 @@ import json
 
 # read csv
 with open('benthos.csv', newline='') as csvfile:
-#    firstRowLabels=""
 
-    ben_data = {}
+    all_data   = []
     benreader = csv.DictReader(csvfile)
     for row in benreader:
-#        print(row['1988per'], row['2004per'])
-        orgName = row['organism']
         #build data struc
         keys = list(row.keys())
         years = keys[2:]
+
+        ben_values = []
         for year in years:
-            print(year)
+            ben_values.append( [year, row[year]])
+
+        orgName = row['organism']
         if "organism" in row:
             del row["organism"]
         if "maxAvg" in row:
             del row["maxAvg"]
 
-        ben_data[orgName] = row
+        ben_data   = {}
+        ben_data["key"] = orgName
+        ben_data["values"] = ben_values
+        all_data.append( ben_data )
         
     # write json
     with open("chart.json", "w") as fp:
-        json.dump(ben_data , fp) 
+        json.dump(all_data , fp) 
 
 
