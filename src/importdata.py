@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Handy utility to reformat some data for use in a d3 chart."""
+"""Handy utility to reformat some data for use in a nv.d3 chart."""
 
 __author__ = "Richard Leir"
-__copyright__ = "Copyrighte 2018, Richard Leir"
+__copyright__ = "Copyright 2018, Richard Leir"
 __credits__ = ["Kathy Conlan", "Mike Bostock"]
 __license__ = "GPL"
 __version__ = "1.0.1"
@@ -12,6 +12,8 @@ __status__ = "Production"
 
 import csv
 import json
+import calendar
+import time
 
 # read csv
 with open('benthos.csv', newline='') as csvfile:
@@ -21,17 +23,24 @@ with open('benthos.csv', newline='') as csvfile:
     for row in benreader:
         #build data struc
         keys = list(row.keys())
-        years = keys[2:]
+        years = keys[3:]
 
         ben_values = []
         for year in years:
-            ben_values.append( [year, row[year]])
+            if row[year] == "":
+                print("null string")
+            else:
+                print(year)
+                timestamp = calendar.timegm(time.strptime( year, '%Y'))
+                ben_values.append( [timestamp, row[year]])
 
-        orgName = row['organism']
+        orgName = row['organism'] + " / "  + row['site']
         if "organism" in row:
             del row["organism"]
-        if "maxAvg" in row:
-            del row["maxAvg"]
+        if "site" in row:
+            del row["site"]
+        if "maxAvgAll" in row:
+            del row["maxAvgAll"]
 
         ben_data   = {}
         ben_data["key"] = orgName
