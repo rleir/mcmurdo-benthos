@@ -12,8 +12,6 @@ __status__ = "Production"
 
 import csv
 import json
-import calendar
-import time
 
 # read csv
 with open('benthos.csv', newline='') as csvfile:
@@ -30,9 +28,7 @@ with open('benthos.csv', newline='') as csvfile:
             if row[year] == "":
                 print("null string")
             else:
-                print(year)
-                timestamp = calendar.timegm(time.strptime( year, '%Y'))
-                ben_values.append( [timestamp, row[year]])
+                ben_values.append( [year, row[year]])
 
         orgName = row['organism'] + " / "  + row['site']
         if "organism" in row:
