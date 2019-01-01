@@ -13,24 +13,26 @@ __status__ = "Production"
 import csv
 import json
 
+input_file = 'four_org.csv'
+
 # read csv
-with open('benthos.csv', newline='') as csvfile:
+with open(input_file, newline='') as csvfile:
 
     all_data   = []
-    benreader = csv.DictReader(csvfile)
-    for row in benreader:
+    input_data = csv.DictReader(csvfile)
+    for row in input_data:
         #build data struc
         keys = list(row.keys())
         years = keys[3:]
 
-        ben_values = []
+        organism_counts = []
         for year in years:
             if row[year] == "":
-                print("null string")
+                organism_counts.append( [year, "Number.NaN"])
             else:
-                ben_values.append( [year, row[year]])
+                organism_counts.append( [year, row[year]])
 
-        orgName = row['organism'] + " / "  + row['site']
+        organism_name_and_site = row['organism'] + " / "  + row['site']
         if "organism" in row:
             del row["organism"]
         if "site" in row:
@@ -38,10 +40,10 @@ with open('benthos.csv', newline='') as csvfile:
         if "maxAvgAll" in row:
             del row["maxAvgAll"]
 
-        ben_data   = {}
-        ben_data["key"] = orgName
-        ben_data["values"] = ben_values
-        all_data.append( ben_data )
+        organism_data   = {}
+        organism_data["key"] = organism_name_and_site
+        organism_data["values"] = organism_counts
+        all_data.append( organism_data )
         
     # write json
     with open("chart.json", "w") as fp:
