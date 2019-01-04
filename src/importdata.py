@@ -16,7 +16,7 @@ import json
 def chart_by_year():
     input_file = 'four_org.csv'
 
-    output_file = 'chartByYear.json'
+    output_file = 'chart_by_year.json'
     all_data   = []
 
     # read input
@@ -53,10 +53,10 @@ def chart_by_year():
         json.dump(all_data , fp) 
 
 
-def chart_by_site():
-    input_file = 'three_sites.csv'
+def chart_by_site(year):
+    input_file = 'three_sites_' + year + '.csv'
 
-    output_file = 'chartBySite.json'
+    output_file = 'chart_by_site_' + year + '.json'
     all_data   = []
 
     # read input
@@ -91,4 +91,8 @@ def chart_by_site():
 if __name__ == "__main__":
     # execute only if run as a script
     chart_by_year()
-    chart_by_site()
+
+#    years_with_complete_data=['1988', '2002', '2003', '2004', '2007', '2008', '2009', '2010', '2011']
+    years_with_complete_data=['2010', '2011']
+    for year in years_with_complete_data:
+        chart_by_site(year)
