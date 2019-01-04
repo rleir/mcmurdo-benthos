@@ -100,7 +100,7 @@
 
     <div class="span10">
       
-<p>	  At the top of the chart, select the organism(s) of interest. Hover over the chart to see anomaly values. </p>
+      <p>	  At the top of the chart, select the organism(s) of interest. Hover over the chart to see scaled values. </p>
 
       <div  id='chart'>
       <svg  class="img-responsive center-block"  style='height:700px'> </svg>
@@ -109,8 +109,33 @@
     </div>
     </div>
 
+
+    <div class="row">
+    <div class="span2">
+      <p> Scaling factors: Each organism's counts were scaled so the max count is shown in the chart at right as 100%. The max counts are listed below. </p> 
+
+      <table border="0" cellspacing="2">
+       <tr>
+          <th>Organism	  </th>
+          <th>Max Count	  </th> </tr>
+      </table>
+    </div>
+
+    <div class="span10">
+      <p>	  At the top of the chart, select the organism(s) of interest. Hover over the chart to see scaled values. </p>
+
+      <div  id='chart2'>
+      <svg  class="img-responsive center-block"  style='height:700px'> </svg>
+      <script src='chart2.js' type='text/javascript'> </script>
+      </div>
+    </div>
+      
+
+
+
+    </div>
+
     <div id="cite">Data Source: Canadian Museum of Nature
-zzzz
     </div>
     <br>
     Above Graphic by: <a href="http://leirtech.com"> Richard Leir</a> with many thanks to Mike Bostock and <a href="http://nvd3.org"> Novus</a>
