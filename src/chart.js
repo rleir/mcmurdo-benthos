@@ -1,4 +1,4 @@
-d3.json('chartByYear.json', function(data) {
+d3.json('chart_by_year.json', function(data) {
   nv.addGraph(function() {
     var chart = nv.models.lineChart()
                   .x(function(d) { return d[0] })
