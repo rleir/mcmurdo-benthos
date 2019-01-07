@@ -93,6 +93,6 @@ if __name__ == "__main__":
     chart_by_year()
 
 #    years_with_complete_data=['1988', '2002', '2003', '2004', '2007', '2008', '2009', '2010', '2011']
-    years_with_complete_data=['2010', '2011']
+    years_with_complete_data=['2009', '2010', '2011']
     for year in years_with_complete_data:
         chart_by_site(year)
