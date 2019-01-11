@@ -3,23 +3,30 @@ queue()
 //    .defer(d3.json, "chart_by_site_1988.json")
 //    .defer(d3.json, "chart_by_site_2002.json")
 //    .defer(d3.json, "chart_by_site_2003.json")
-//    .defer(d3.json, "chart_by_site_2004.json")
-//    .defer(d3.json, "chart_by_site_2007.json")
-//    .defer(d3.json, "chart_by_site_2008.json")
+    .defer(d3.json, "chart_by_site_2004.json")
+    .defer(d3.json, "chart_by_site_2007.json")
+    .defer(d3.json, "chart_by_site_2008.json")
     .defer(d3.json, "chart_by_site_2009.json")
     .defer(d3.json, "chart_by_site_2010.json")
     .defer(d3.json, "chart_by_site_2011.json")
     .await(analyze);
 
-function analyze(error, chart_by_site_2009, chart_by_site_2010, chart_by_site_2011) {
+function analyze(
+    error,
+    chart_by_site_2004,
+    chart_by_site_2007,
+    chart_by_site_2008,
+    chart_by_site_2009,
+    chart_by_site_2010,
+    chart_by_site_2011) {
     if(error) { console.log(error); }
 
 //    drawChart(chart_by_site_1988, '1988');
 //    drawChart(chart_by_site_2002, '2002');
 //    drawChart(chart_by_site_2003, '2003');
-//    drawChart(chart_by_site_2004, '2004');
-//    drawChart(chart_by_site_2007, '2007');
-//    drawChart(chart_by_site_2008, '2008');
+    drawChart(chart_by_site_2004, '2004');
+    drawChart(chart_by_site_2007, '2007');
+    drawChart(chart_by_site_2008, '2008');
     drawChart(chart_by_site_2009, '2009');
     drawChart(chart_by_site_2010, '2010');
     drawChart(chart_by_site_2011, '2011');
